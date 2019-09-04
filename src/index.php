@@ -9,15 +9,24 @@
     // $forget_psw = isset($_GET['controle'])?$_GET['controle']:'forget_psw';
     $valid = isset($_GET['r'])?$_GET['r']:'';
     
+    
     if ($valid != ""){
         require ('./C/confirmation.php');
         confirmation();
     }
     if (count($_GET) == 0){
-        require './C/inscription.php';
-        $action();
-        return ;
+        if($_SESSION == NULL || $_SESSION['profil'] == NULL){
+            require './C/inscription.php';
+            $action();
+            return ;
+        }
+        else{
+            require 'V/accueil2.html';
+            return;
+        }
+        
     }
+
     if ((count($_GET) != 0) && (isset($_GET['controle']) && isset ($_GET['action']))){
         if (file_exists('./C/' . $controle . '.php')){
             require ('./C/' . $controle . '.php');

@@ -21,5 +21,17 @@ function verif_ident($mail, $password)
 	return 0;
 }
 
+function getUser($id){
+	require('config/database.php');
+
+	$req = $bdd->prepare('SELECT * FROM user WHERE id = ?');
+	$req->execute(array($id));
+	$resultat = $req->fetch();
+
+	$_SESSION['profil'] = $resultat;
+
+	return 1;
+}
+
 ?>
 

@@ -31,6 +31,8 @@ function addProfil($genre, $location, $biography,$orientation, $age, $name, $log
                 'login' => $login,
 				'id' => $id
                 ));
+    require ('M/connect_bd.php');
+    getUser($id);
 	return 1;
 }
 

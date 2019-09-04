@@ -3,10 +3,10 @@
 <body>
     <!-- Image and text -->
     <nav class="navbar navbar-light" style="background-color: white;">
-            <a href="" class="navbar-brand" style="color:#E9467C"><img src="pictures/icon.png" class="d-inline-block align-top">Matcha</a>
+            <a href="index.php" class="navbar-brand" style="color:#E9467C"><img src="pictures/icon.png" class="d-inline-block align-top">Matcha</a>
             <form class="form-inline">
                 <div class="dropdown">
-                        <button class="btn dropdown-toggle" type="button"  data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="text-decoration:none; color:#E9467C; font-family: 'Arimo', sans-serif;background-color:white;border: none;">
+                        <button class="btn dropdown-toggle" type="button"  data-toggle="dropdown" aria-haspopup="true"  style="text-decoration:none; color:#E9467C; font-family: 'Arimo', sans-serif;background-color:white;border: none;">
                           My account
                         </button>
                         <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">

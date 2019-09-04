@@ -19,16 +19,22 @@ function add_profil2(){
    
 
 	$id = $_SESSION['profil']['id'] ;
-	$RandomAccountNumber = uniqid(); //generer un nom aleatoirement
+	// $RandomAccountNumber = uniqid(); //generer un nom aleatoirement
 
-	$nameImage = $id . '_' . $RandomAccountNumber;
+	// $nameImage = $id . '_' . $RandomAccountNumber;
+	// $structure = 'ImageUser/' . $id . '/';
+	// $extension = strrchr($_FILES['img']['name'], '.'); // recuperer l'extension de l'image uploader
+	// if (!file_exists($structure)) {
+	// 	mkdir($structure, 0777, true);
+	// }
+	// move_uploaded_file($_FILES["img"]["tmp_name"], $structure . $nameImage . $extension);
+
 	$structure = 'ImageUser/' . $id . '/';
 	$extension = strrchr($_FILES['img']['name'], '.'); // recuperer l'extension de l'image uploader
 	if (!file_exists($structure)) {
 		mkdir($structure, 0777, true);
 	}
-	move_uploaded_file($_FILES["img"]["tmp_name"], $structure . $nameImage . $extension);
-
+	move_uploaded_file($_FILES["img"]["tmp_name"], $structure . $id . $extension);
 
     require 'M/profil_bd.php';
     if (addProfil($genre, $location, $biography, $orientation, $age, $name, $login, $last_name, $mail) == 1){
