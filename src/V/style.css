@@ -1,6 +1,14 @@
-textarea {
+.nosizetextarea {
     resize: none;
 }
 .cinquante{
     width: 20%;
+}
+
+.image-upload>input {
+    display: none;
+  }
+
+.cursorpointer{
+    cursor: pointer;
 }

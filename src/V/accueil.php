@@ -9,7 +9,7 @@
     <link rel="stylesheet" type="text/css" href="V/style.css" media="all"/>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <link href="https://fonts.googleapis.com/css?family=Arimo&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="css/add_updateProfil.css">
+    <link rel="stylesheet" href="V/css/add_updateProfil.css">
     <title>Document</title>
     <title>Profil</title>
 </head>
@@ -30,70 +30,96 @@
     
 <!-- //////////////////////// -->
 <br/><br/>
-
 <!-- FORMULAIRE D"AJOUT PROFIL -->
-    <form method="post" action="index.php?controle=profil&action=add_profil2" enctype="multipart/form-data">  
-                <div>
-                    <input type="hidden" name="MAX_FILE_SIZE" value="10000000" />
-                    <input id="up" type="file" name="img" />
-                    <input type="submit" class="inscriptionbtn" id="upload" name="upload" style="display:none" value="Envoyer" />
+<div class="container">
+    <form method="post" action="index.php?controle=profil&action=add_profil2" enctype="multipart/form-data">
+    <div class="row">
+        <div class="col-lg-12">
+            <!-- <input type="hidden" name="MAX_FILE_SIZE" value="10000000" />
+            <input id="up" type="file" name="img" /> -->
+            <div class="image-upload">
+                <label for="file-input">
+                    <img class="cinquante cursorpointer" src="V/pictures/profil.png"/>
+                </label>
+                <input id="file-input" type="file" name="img" />
+            </div>
+            <!-- <input type="submit" class="inscriptionbtn" id="upload" name="upload" style="display:none" value="Envoyer" /> -->
+            <?php
+                $id =  $_SESSION['profil']['id'];
+                $dirname = "ImageUser/" . $id . '/';
+                $images = glob($dirname."*.*");
+                
+                foreach($images as $image) {
+                    echo '<img class="cinquante" src="'.$image.'" /><br />';
+                }
+            ?>
+
+          
+        </div>
+       
+    </div>
+    <div class="row">
+            <div class="col-lg-12">
+                <div class="form-group">
+                    <input  <?php  echo ($_SESSION['profil']['genre'] == "man" ? 'checked="checked"': ''); ?> type="radio" name="genre" value="man" >
+                    <label for="man">Man</label>
+                    <input  <?php echo ($_SESSION['profil']['genre'] == "women" ? 'checked="checked"': '');?> type="radio" name="genre" value="women">
+                    <label for="women">Women</label>
                 </div>
-
-   <?php
-        $id =  $_SESSION['profil']['id'];
-        $dirname = "ImageUser/" . $id . '/';
-        $images = glob($dirname."*.*");
-        
-        foreach($images as $image) {
-            echo '<img class="cinquante" src="'.$image.'" /><br />';
-        }
-    ?>
-
-                <p>Login :</p>
-                <input type="text" name="login" id="login" value="<?php echo(htmlspecialchars($_SESSION['profil']['login'])) ;?>" required/>
-                <p>Name :</p>
-                <input type="text" name="name" id="name" value="<?php echo(htmlspecialchars($_SESSION['profil']['name'])) ;?>" required/>
-                <p>Last-Name :</p>
-                <input type="text" name="last_name" id="last_name" value="<?php echo(htmlspecialchars($_SESSION['profil']['last_name'])) ;?>"required/>
-                <p>Mail :</p>
-                <input type="email" name="mail" id="mail" value="<?php echo(htmlspecialchars($_SESSION['profil']['mail'])) ;?>"  required/>
-               
-            <div class="form-group">
-                <input  <?php  echo ($_SESSION['profil']['genre'] == "man" ? 'checked="checked"': ''); ?> type="radio" name="genre" value="man" >
-                <label for="man">Man</label>
-                <input  <?php echo ($_SESSION['profil']['genre'] == "women" ? 'checked="checked"': '');?> type="radio" name="genre" value="women">
-                <label for="women">Women</label>
             </div>
-
-            <div class="form-group">
-                <select name="orientation" class="custom-select" required>
-                    <option value="" selected >I am ...</option>
-                    <option <?php if ($_SESSION['profil']['orientation'] == "man") echo "selected=\"selected\"" ?>value="man">looking for a woman</option>
-                    <option <?php if ($_SESSION['profil']['orientation'] == "woman") echo "selected=\"selected\"" ?>value="woman">looking for a man</option>
-                </select>
+        </div>
+        <div class="row">    
+            <div class="col-6">    
+                <div class="form-group">
+                    <input type="text" class="form-control" name="login" id="login" value="<?php echo(htmlspecialchars($_SESSION['profil']['login'])) ;?>" required/>
+                </div>
+                <div class="form-group">
+                    <input type="text" class="form-control" name="name" id="name" value="<?php echo(htmlspecialchars($_SESSION['profil']['name'])) ;?>" required/>
+                </div>
+                <div class="form-group">
+                    <input type="text" class="form-control" name="last_name" id="last_name" value="<?php echo(htmlspecialchars($_SESSION['profil']['last_name'])) ;?>"required/>
+                </div>
+                <div class="form-group">
+                    <input type="email" class="form-control" name="mail" id="mail" value="<?php echo(htmlspecialchars($_SESSION['profil']['mail'])) ;?>"  required/>
+                </div>
             </div>
-             <div class="form-group">
-                <select class="custom-select"  name="age" required>
-                        <option value="" selected >Select your age</option>
-                        <?php for($value = 18; $value <= 75; $value++){ 
-                                echo('<option value="' . $value . '"'); 
-                                if ($_SESSION['profil']['age'] == $value)
-                                    echo("selected=\"selected\"");
-                                echo('>' . $value . ' ans</option>');
-                        }?>
-                </select>
+            <div class="col-6">
+                <div class="form-group">
+                    <select name="orientation" class="custom-select" required>
+                        <option value="" selected >I am ...</option>
+                        <option <?php if ($_SESSION['profil']['orientation'] == "man") echo "selected=\"selected\"" ?>value="man">looking for a woman</option>
+                        <option <?php if ($_SESSION['profil']['orientation'] == "woman") echo "selected=\"selected\"" ?>value="woman">looking for a man</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <select class="custom-select"  name="age" required>
+                            <option value="" selected >Select your age</option>
+                            <?php for($value = 18; $value <= 75; $value++){ 
+                                    echo('<option value="' . $value . '"'); 
+                                    if ($_SESSION['profil']['age'] == $value)
+                                        echo("selected=\"selected\"");
+                                    echo('>' . $value . ' ans</option>');
+                            }?>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <input type="text" placeholder="My location" name="location" value="<?php echo(htmlspecialchars($_SESSION['profil']['location'])) ;?>"  class="form-control">
+                </div>
+                <div class="form-group">
+                    <textarea class="nosizetextarea form-control" name="biography" id="exampleFormControlTextarea1" rows="5" placeholder="Write a little biography about you...(less than 200 characters)"><?php echo(htmlspecialchars($_SESSION['profil']['biography'])) ;?></textarea>
+                </div>
+                <br/>
             </div>
-            <div class="form-group">
-                <input type="text" placeholder="My location" name="location" value="<?php echo(htmlspecialchars($_SESSION['profil']['location'])) ;?>"  class="form-control">
+            <div class="row">
+                <div class="col-lg-12">
+                    <button type="submit" class="btn btn-primary" id="btn-account">Confirm my information</button>
+                </div>
             </div>
-            <div class="form-group">
-                <textarea class="form-control" name="biography" id="exampleFormControlTextarea1" rows="5" placeholder="Write a little biography about you...(less than 200 characters)"><?php echo(htmlspecialchars($_SESSION['profil']['biography'])) ;?></textarea>
-            </div>
-            <br/>
-            <button type="submit" class="btn btn-primary" id="btn-account">Confirm my information</button>
+        </div>
     </form>
+</div>
 
-		<a href="index.php?controle=param&action=delete_account">Supprimer mon compte</a>
+<a href="index.php?controle=param&action=delete_account">Supprimer mon compte</a>
 
 </center>
 <!-- /////////////////////////////// -->

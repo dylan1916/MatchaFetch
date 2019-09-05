@@ -3,7 +3,7 @@
 function add_profil(){
 	require 'M/profil_bd.php';
 	// displayProfil();
-    require 'V/profil.php';
+    require 'V/accueil.php';
 }
 
 function add_profil2(){
@@ -39,8 +39,12 @@ function add_profil2(){
     require 'M/profil_bd.php';
     if (addProfil($genre, $location, $biography, $orientation, $age, $name, $login, $last_name, $mail) == 1){
 	    require 'V/accueil.php';
-    }
+	}
 
+}
+
+function add_pic(){
+	require ('V/mypictures.php');
 }
 
 ?>

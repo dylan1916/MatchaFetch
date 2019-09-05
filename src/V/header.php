@@ -3,7 +3,7 @@
 <body>
     <!-- Image and text -->
     <nav class="navbar navbar-light" style="background-color: white;">
-            <a href="index.php" class="navbar-brand" style="color:#E9467C"><img src="pictures/icon.png" class="d-inline-block align-top">Matcha</a>
+            <a href="index.php" class="navbar-brand" style="color:#E9467C"><img src="V/pictures/icon.png" class="d-inline-block align-top">Matcha</a>
             <form class="form-inline">
                 <div class="dropdown">
                         <button class="btn dropdown-toggle" type="button"  data-toggle="dropdown" aria-haspopup="true"  style="text-decoration:none; color:#E9467C; font-family: 'Arimo', sans-serif;background-color:white;border: none;">
@@ -28,7 +28,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link rel="stylesheet" href="css/header.css">
+    <link rel="stylesheet" href="V/css/header.css">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <link href="https://fonts.googleapis.com/css?family=Arimo:400,700|Secular+One&display=swap" rel="stylesheet">
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>

@@ -22,7 +22,7 @@ require('footer.php');
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link href="https://fonts.googleapis.com/css?family=Roboto:300i&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="css/create_account.css">
+    <link rel="stylesheet" href="V/css/create_account.css">
     <title>Document</title>
 </head>
 
