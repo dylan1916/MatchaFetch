@@ -9,5 +9,11 @@ function home()
 	require 'V/accueil.php';
 }
 
+function displayProfil(){
+	$id =  $_SESSION['profil']['id'];
+	require 'M/accueil_bd.php';
+	accueil_bd($id);
+	return ;
+}
 
 ?>
