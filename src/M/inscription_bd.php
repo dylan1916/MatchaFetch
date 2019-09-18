@@ -9,8 +9,8 @@ function inscription($login, $last_name, $name, $mail, $password1)
 	else
 	{
 		$pass_hache = password_hash($_POST['password'], PASSWORD_DEFAULT);
-		$inserer = $bdd->prepare('insert into user (login, last_name, name, mail, password, validate, orientation, biography, interests, notif)
-				values (:login, :last_name, :name, :mail, :password, 0, NULL, NULL, NULL, 0)');
+		$inserer = $bdd->prepare('insert into user (login, last_name, name, mail, password, validate, love, orientation, biography, latitude, longitude, interests, notif)
+				values (:login, :last_name, :name, :mail, :password, 0, 0, NULL, NULL, NULL, NULL, NULL, 0)');
 
 		$inserer->execute(array(
 					'login' => $login,

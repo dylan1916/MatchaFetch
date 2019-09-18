@@ -2,15 +2,12 @@
 
 function deconnect()
 {
-	if (!isset($_SESSION['profil']))
-	{
-		require 'C/accueil.php';
-		home();
-		return ;
+	if (isset($_SESSION['profil'])){
+		$_SESSION['profil']['mail'] = NULL;
+		session_destroy();
 	}
-	$_SESSION['profil']['mail'] = NULL;
-	session_destroy();
-	header("location: ./");
+	require 'V/accueil.php';
+	// header("location: ./");
 }
 
 ?>

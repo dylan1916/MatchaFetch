@@ -15,7 +15,7 @@ function valid_bd($mail)
 		alert('Veuillez activer votre compte par mail');
 		</script>
 			<?php
-		require 'V/inscription.html';
+		require 'V/accueil.php';
 		return 0;
 	}
 

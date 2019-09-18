@@ -12,7 +12,7 @@ function ident()
 	$password2 = isset($_POST['validate'])?$_POST['validate']:'';
 
 	if (count($_POST) != 6){
-		require 'V/inscription.html';
+		require 'V/accueil.php';
 	}
 	else if ($password1 != $password2){
 		?>
@@ -20,7 +20,7 @@ function ident()
 			alert('Les Mots de passe ne sont pas identiques');
 		</script>
 			<?php
-			require 'V/inscription.html';
+			require 'V/accueil.php';
 	}
 	else if (!filter_var($_POST['mail'], FILTER_VALIDATE_EMAIL) || (!preg_match("/^[a-z0-9._-]+@[a-z0-9._-]+\.[a-z]{2,6}$/", $mail))){
 		?>
@@ -28,7 +28,7 @@ function ident()
 			alert('Le mail n\'est pas valide');
 		</script>
 			<?php
-			require 'V/inscription.html';
+			require 'V/accueil.php';
 	}
 	else if ((strlen($password1) < 8) || (!preg_match("#[0-9]+#", $password1) || (!preg_match("#[a-zA-Z]+#", $password1)))){
 		?>
@@ -36,7 +36,7 @@ function ident()
 			alert('Votre mot de passe doit contenir au moins 8 caractères et inclure un chiffre');
 		</script>
 			<?php
-			require 'V/inscription.html';
+			require 'V/accueil.php';
 	}
 	
 	else{
@@ -50,13 +50,13 @@ function ident()
 				alert('Cette adresse e-mail ou login est déjà attribuée à un autre client');
 			</script>
 				<?php
-				require 'V/inscription.html';
+				require 'V/accueil.php';
 			return (1);
 		}
 	}
 }
 function print_insc(){
-	require('V/inscription.html');
+	require('V/accueil.php');
 }
 
 function send_mail($login, $mail)
@@ -66,10 +66,12 @@ function send_mail($login, $mail)
 	$req->execute(array($_POST['login']));
 	$data = $req->fetch();
 	$subject = 'Confirmation du compte -Matcha-!';
+	// $headers = 'From:' . $sender;
+	$headers = 'From:';
 	$message = 'Bonjour, ' . $login  . ' Pour valider votre compte, 
 	veuillez cliquer sur le lien ci dessous : http://localhost:8888/matcha/src/index.php?r='.$data['id']. 
 	'&controle=accueil&action=home';
-	mail($mail, $subject, $message); //, implode("\r\n", $headers));
+	mail($mail, $subject, $message, $headers); //, implode("\r\n", $headers));
 
 	require 'V/Confirmation.php';
 }

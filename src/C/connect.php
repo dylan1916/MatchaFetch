@@ -5,8 +5,9 @@ function ident()
 	$mail = isset($_POST['mail'])?$_POST['mail']:'';
 	$password = isset($_POST['password'])?$_POST['password']:'';
 
-	if (count($_POST) != 2)
+	if (count($_POST) != 2){
 		require 'V/connect.html';
+	}
 	else
 	{
 		require 'M/confirmation.php';
@@ -26,7 +27,7 @@ function ident()
 				</script>
 <?php
 				//echo 'Mauvais mot de passe ou identifiant';
-				require 'V/inscription.html';
+				require 'V/inscription.php';
 			}
 		}
 	}
